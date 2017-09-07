@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<beans xmlns="http://www.springframework.org/schema/beans"  
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+	xmlns:aop="http://www.springframework.org/schema/aop" 
+    xsi:schemaLocation="http://www.springframework.org/schema/beans    
+	http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+	http://www.springframework.org/schema/aop    
+	http://www.springframework.org/schema/aop/spring-aop-4.2.xsd">  
+	
+	<bean id="knight" class="com.mmc.spring.system.core.hello.knight.DamselRecuingKnight">
+		<constructor-arg ref="quest"/>
+	</bean>
+	
+	<bean id="quest" class="com.mmc.spring.system.core.hello.knight.RescueDamselQuest"/>
+	
+	<!-- 
+	<bean id="minstrel" class="com.mmc.spring.system.core.hello.knight.Minstrel"/>
+	<bean id="knight1" class="com.mmc.spring.system.core.hello.knight.BraveKnight">
+		<constructor-arg ref="quest"/>
+		<constructor-arg ref="minstrel"/>
+	</bean>
+	 -->
+	 
+	 <!-- aop形式 -->
+	 <bean id="knight1" class="com.mmc.spring.system.core.hello.knight.BraveKnight">
+		<constructor-arg ref="quest"/>
+	</bean>
+	 <bean id="minstrel" class="com.mmc.spring.system.core.hello.knight.Minstrel"/>
+	 <aop:config>
+	 	<!-- 切面 -->
+	 	<aop:aspect ref="minstrel">
+	 		<aop:pointcut expression="execution(* *.embarkOnQuest(..))" id="embark"/>
+	 		<aop:before method="singBeforeQuest" pointcut-ref="embark"/>
+	 		<aop:after method="singAfterQuest" pointcut-ref="embark"/>
+	 	</aop:aspect>
+	 	
+	 </aop:config>
+	
+</beans>
