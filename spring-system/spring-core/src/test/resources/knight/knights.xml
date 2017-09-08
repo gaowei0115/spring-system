@@ -20,7 +20,12 @@
 		<constructor-arg ref="minstrel"/>
 	</bean>
 	 -->
-	 
+	
+	<!-- bean配置 -->
+	<bean id="autoBeanAware" class="com.mmc.spring.system.core.hello.aware.AutoBeanAware"/>
+	<bean id="autoBeanMock" class="com.mmc.spring.system.core.hello.aware.AutoBeanMock"/>
+	
+		 
 	 <!-- aop形式 -->
 	 <bean id="knight1" class="com.mmc.spring.system.core.hello.knight.BraveKnight">
 		<constructor-arg ref="quest"/>
@@ -35,5 +40,6 @@
 	 	</aop:aspect>
 	 	
 	 </aop:config>
+	 
 	
 </beans>
