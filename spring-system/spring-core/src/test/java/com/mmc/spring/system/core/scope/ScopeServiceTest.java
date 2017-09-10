@@ -1,4 +1,4 @@
-// Copyright (C) 2017-2017 GGWW All rights reserved
+// Copyright (C) 2016-2017 GWGW All rights reserved
 package com.mmc.spring.system.core.scope;
 
 import org.junit.Test;
@@ -8,36 +8,35 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 /** 
- * className: ScopeBeanTest<br/>
+ * ClassName: ScopeServiceTest<br/>
  * Description: <br/>
  * Author: GW<br/>
- * CreateTime： 2017年9月8日<br/>
+ * Create： 2017年9月8日<br/>
  *
- * History: (version) Author DateTime Note <br/>
+ * History: (Version) Author dateTime description <br/>
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations="classpath:applicationContext.xml")
-public class ScopeBeanTest {
+public class ScopeServiceTest {
 
 	@Autowired
-	private ScopeBean scopeBean;
+	private ScopeService scopeService;
 	@Autowired
-	private ScopeBean scopeBean2;
-	
+	private ScopeService scopeService2;
 	@Autowired
-	private StudentBean studentBean;
+	private StudentService studentService;
 	@Autowired
-	private StudentBean studentBean2;
+	private StudentService studentService2;
 	
 	@Test
 	public void test() {
-		System.out.println(scopeBean);
-		System.out.println(scopeBean2);
+		System.out.println(scopeService);
+		System.out.println(scopeService2);
 	}
 	
 	@Test
 	public void test01() {
-		System.out.println(studentBean);
-		System.out.println(studentBean2);
+		System.out.println(studentService);
+		System.out.println(studentService2);
 	}
 }

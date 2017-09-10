@@ -1,8 +1,7 @@
 // Copyright (C) 2017-2017 GGWW All rights reserved
 package com.mmc.spring.system.core.scope;
 
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 /** 
  * className: ScopeBean<br/>
@@ -12,8 +11,7 @@ import org.springframework.stereotype.Component;
  *
  * History: (version) Author DateTime Note <br/>
  */
-@Component
-@Scope("singleton")
+@Service
 public class ScopeBean {
 
 }
