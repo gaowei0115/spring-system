@@ -1,8 +1,10 @@
 // Copyright (C) 2016-2017 GWGW All rights reserved
 package com.mmc.spring.system.core.aop;
 
+import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.AfterThrowing;
+import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
@@ -18,7 +20,7 @@ import org.aspectj.lang.annotation.Pointcut;
 @Aspect
 public class Audience {
 
-	@Pointcut("execution(** com.mmc.spring.system.core.aop.perform(..))")
+	@Pointcut("execution(** com.mmc.spring.system.core.aop.*.perform(..))")
 	public void performance() {
 		
 	}
@@ -41,6 +43,18 @@ public class Audience {
 	@AfterThrowing("performance()")
 	public void demandRefund() {
 		System.out.println("demand a refund ");
+	}
+	
+	@Around("performance()")
+	public void audienceAround(ProceedingJoinPoint pdj) {
+		System.out.println("start....");
+		try {
+			pdj.proceed();
+		} catch (Throwable e) {
+			e.printStackTrace();
+		}
+		System.out.println("end....");
+		
 	}
 	
 }

@@ -15,6 +15,7 @@
     <spring.version>4.3.10.RELEASE</spring.version>
     <junit.version>4.12</junit.version>
     <mockito.version>2.8.9</mockito.version>
+    <mysql.version>6.0.6</mysql.version>
   </properties>
 
   <dependencies>
@@ -59,6 +60,11 @@
 	    <groupId>org.aspectj</groupId>
 	    <artifactId>aspectjweaver</artifactId>
 	    <version>1.8.10</version>
+	</dependency>
+	<dependency>
+	    <groupId>mysql</groupId>
+	    <artifactId>mysql-connector-java</artifactId>
+	    <version>${mysql.version}</version>
 	</dependency>
   </dependencies>
   <modules>

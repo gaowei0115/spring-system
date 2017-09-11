@@ -27,5 +27,9 @@
 	  -->
 	
 	<import resource="xml/applicationContext-properties.xml"/>
+	<!-- 
+	<import resource="xml/applicationContext-aop.xml"/>
+	 -->
+	<import resource="xml/applicationContext-datasource.xml"/>
 	
 </beans>
