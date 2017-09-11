@@ -16,6 +16,8 @@
     <junit.version>4.12</junit.version>
     <mockito.version>2.8.9</mockito.version>
     <mysql.version>6.0.6</mysql.version>
+    <servelt.version>3.1.0</servelt.version>
+    <logback.version>1.2.3</logback.version>
   </properties>
 
   <dependencies>
@@ -45,6 +47,16 @@
 	    <version>${spring.version}</version>
 	</dependency>
 	<dependency>
+	    <groupId>org.springframework</groupId>
+	    <artifactId>spring-webmvc</artifactId>
+	    <version>${spring.version}</version>
+	</dependency>
+	<dependency>
+	    <groupId>org.springframework</groupId>
+	    <artifactId>spring-web</artifactId>
+	    <version>${spring.version}</version>
+	</dependency>
+	<dependency>
 		<groupId>junit</groupId>
 		<artifactId>junit</artifactId>
 		<version>${junit.version}</version>
@@ -66,8 +78,46 @@
 	    <artifactId>mysql-connector-java</artifactId>
 	    <version>${mysql.version}</version>
 	</dependency>
+	<dependency>
+	    <groupId>ch.qos.logback</groupId>
+	    <artifactId>logback-classic</artifactId>
+	    <version>${logback.version}</version>
+	    <scope>test</scope>
+	</dependency>
+	<dependency>
+	    <groupId>ch.qos.logback</groupId>
+	    <artifactId>logback-core</artifactId>
+	    <version>${logback.version}</version>
+	</dependency>
+	<dependency>
+	    <groupId>ch.qos.logback</groupId>
+	    <artifactId>logback-access</artifactId>
+	    <version>${logback.version}</version>
+	</dependency>
   </dependencies>
+  
+  <dependencyManagement>
+  	<dependencies>
+  		<dependency>
+		    <groupId>javax.servlet</groupId>
+		    <artifactId>javax.servlet-api</artifactId>
+		    <version>${servelt.version}</version>
+		    <scope>provided</scope>
+		</dependency>
+		<dependency>
+		    <groupId>javax.servlet</groupId>
+		    <artifactId>jstl</artifactId>
+		    <version>1.2</version>
+		</dependency>
+		<dependency>
+		    <groupId>taglibs</groupId>
+		    <artifactId>standard</artifactId>
+		    <version>1.1.2</version>
+		</dependency>
+  	</dependencies>
+  </dependencyManagement>
   <modules>
   	<module>spring-core</module>
+  	<module>spring-web-base</module>
   </modules>
 </project>
