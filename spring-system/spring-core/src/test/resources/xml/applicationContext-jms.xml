@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<beans xmlns="http://www.springframework.org/schema/beans"  
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context" 
+	xmlns:util="http://www.springframework.org/schema/util"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans    
+	http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+	http://www.springframework.org/schema/aop    
+	http://www.springframework.org/schema/aop/spring-aop-4.2.xsd
+	http://www.springframework.org/schema/context   
+	http://www.springframework.org/schema/context/spring-context-4.2.xsd
+	http://www.springframework.org/schema/util   
+	http://www.springframework.org/schema/util/spring-util-4.2.xsd">
+	
+	<!-- 引入配置文件 -->
+	<context:property-placeholder location="property/jms.properties"/>
+	
+	<!-- mq factory -->
+	<bean id="connectionFactory" class="org.apache.activemq.spring.ActiveMQConnectionFactory">
+		<property name="brokerURL" value="${jms.connection.url}" />
+		<property name="userName" value="${jms.connection.username}" />
+		<property name="password" value="${jms.connection.password}" />
+	</bean>
+	
+	<!-- 转换器 -->
+	<bean id="mappingJackson2MessageConverter" class="org.springframework.jms.support.converter.MappingJackson2MessageConverter">
+		<property name="typeIdPropertyName" value="111"/>
+	</bean>
+	
+	<!-- jmsTemplate -->
+	<bean id="jmsTemplate" class="org.springframework.jms.core.JmsTemplate">
+		<property name="connectionFactory" ref="connectionFactory"/>
+		<!-- 配置消息发送的目的地 -->
+		<property name="defaultDestinationName" value="spring.core.queue" />
+		<property name="messageConverter" ref="mappingJackson2MessageConverter"/>
+	</bean>
+	
+</beans>
